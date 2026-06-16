@@ -152,23 +152,19 @@
         <div class="my-auto">
           <h2 class="mb-5">Publications</h2>
           <div class="publication-toolbar">
-            <div class="form-row">
-              <div class="col-md-8 mb-2">
-                <input id="publication-search" class="form-control" type="search"
-                       placeholder="Search by title, author, venue, or year"
-                       aria-label="Search publications">
-              </div>
-              <div class="col-md-4 mb-2">
-                <select id="publication-filter" class="form-control" aria-label="Filter publications by type">
-                  <option value="all">All publication types</option>
-                  <option value="article">Journal articles</option>
-                  <option value="inproceedings">Conference papers</option>
-                  <option value="thesis">Theses</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
-          </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-2">
+      <select id="publication-filter"
+              class="form-control"
+              aria-label="Filter publications by type">
+        <option value="all">All publication types</option>
+        <option value="article">Journal articles</option>
+        <option value="inproceedings">Conference papers</option>
+        <option value="thesis">Theses</option>
+      </select>
+    </div>
+  </div>
+</div>
 
           <div id="publication-status">Loading publications...</div>
           <div id="publication-list" aria-live="polite"></div>
@@ -791,18 +787,17 @@ list.innerHTML = sortedYears.map(function (year) {
         }
 
         function applyFilters() {
-          var query = document.getElementById('publication-search').value.toLowerCase().trim();
-          var type = document.getElementById('publication-filter').value;
+  var type = document.getElementById('publication-filter').value;
 
-          var filtered = publications.filter(function (item) {
-            var text = [item.title, item.author, item.journal, item.booktitle, item.school, item.year]
-              .join(' ').toLowerCase();
-            var matchesQuery = !query || text.indexOf(query) !== -1;
-            var matchesType = type === 'all' || publicationCategory(item.type) === type;
-            return matchesQuery && matchesType;
-          });
-          render(filtered);
-        }
+  var filtered = publications.filter(function (item) {
+    return (
+      type === 'all' ||
+      publicationCategory(item.type) === type
+    );
+  });
+
+  render(filtered);
+}
 
         function loadPublications() {
           fetch(BIBTEX_FILE)
@@ -826,7 +821,6 @@ list.innerHTML = sortedYears.map(function (year) {
             });
         }
 
-        document.getElementById('publication-search').addEventListener('input', applyFilters);
         document.getElementById('publication-filter').addEventListener('change', applyFilters);
         loadPublications();
       }());
