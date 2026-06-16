@@ -23,6 +23,78 @@
     <!-- Custom styles for this template -->
     <link href="css/resume.min.css" rel="stylesheet">
 
+	  <style>
+  .publication-toolbar {
+    margin-bottom: 1.5rem;
+  }
+
+  #publication-status {
+    margin-bottom: 1.25rem;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+
+  .publication-year {
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .publication-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    line-height: 1.65;
+  }
+
+  .publication-number {
+    flex: 0 0 3.25rem;
+    padding-right: 0.8rem;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .publication-reference {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .publication-reference em {
+    font-style: italic;
+  }
+
+  .publication-reference strong {
+    font-weight: 700;
+  }
+
+  .publication-links {
+    white-space: normal;
+  }
+
+  .publication-links a {
+    display: inline-block;
+    margin-left: 0.4rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .publication-links a:first-child {
+    margin-left: 0.6rem;
+  }
+
+  @media (max-width: 575.98px) {
+    .publication-number {
+      flex-basis: 2.7rem;
+      padding-right: 0.6rem;
+    }
+
+    .publication-item {
+      line-height: 1.55;
+    }
+  }
+</style>
+
   </head>
 
   <body id="page-top">
@@ -289,34 +361,146 @@
             .trim();
         }
 
-        function formatOneAuthor(author) {
-          author = cleanBibText(author);
-          if (author.indexOf(',') !== -1) {
-            var pieces = author.split(',');
-            var lastName = pieces.shift().trim();
-            var firstName = pieces.join(' ').trim();
-            return (firstName + ' ' + lastName).trim();
-          }
-          return author;
-        }
-
         function isPersonalName(name) {
           return PERSONAL_NAME_PATTERNS.some(function (pattern) {
             return pattern.test(name);
           });
         }
 
-        function formatAuthors(authorString) {
-          return String(authorString || '')
-            .split(/\s+and\s+/i)
-            .map(formatOneAuthor)
-            .filter(Boolean)
-            .map(function (author) {
-              var safeAuthor = escapeHtml(author);
-              return isPersonalName(author) ? '<strong>' + safeAuthor + '</strong>' : safeAuthor;
-            })
-            .join(', ');
-        }
+		function initialsFromGivenName(givenName) {
+  return cleanBibText(givenName)
+    .split(/[\s-]+/)
+    .filter(Boolean)
+    .map(function (part) {
+      var firstLetter = part.charAt(0);
+
+      if (!firstLetter) {
+        return '';
+      }
+
+      return firstLetter.toUpperCase() + '.';
+    })
+    .filter(Boolean)
+    .join(' ');
+}
+
+function parseAuthorName(author) {
+  author = cleanBibText(author);
+
+  if (!author) {
+    return {
+      givenName: '',
+      familyName: '',
+      displayName: ''
+    };
+  }
+
+  /*
+   * BibTeX commonly stores names as:
+   *   He, Tiantian
+   *   Ong, Yew-Soon
+   *
+   * It may also store:
+   *   Tiantian He
+   */
+  if (author.indexOf(',') !== -1) {
+    var commaParts = author.split(',');
+    var familyName = commaParts.shift().trim();
+    var givenName = commaParts.join(' ').trim();
+
+    return {
+      givenName: givenName,
+      familyName: familyName,
+      displayName: (
+        initialsFromGivenName(givenName) +
+        ' ' +
+        familyName
+      ).trim()
+    };
+  }
+
+  var nameParts = author.split(/\s+/).filter(Boolean);
+
+  if (nameParts.length === 1) {
+    return {
+      givenName: '',
+      familyName: nameParts[0],
+      displayName: nameParts[0]
+    };
+  }
+
+  var lastName = nameParts.pop();
+  var firstNames = nameParts.join(' ');
+
+  return {
+    givenName: firstNames,
+    familyName: lastName,
+    displayName: (
+      initialsFromGivenName(firstNames) +
+      ' ' +
+      lastName
+    ).trim()
+  };
+}
+
+function isPersonalAuthor(authorInfo) {
+  var normalizedGiven = authorInfo.givenName
+    .toLowerCase()
+    .replace(/[^a-z]/g, '');
+
+  var normalizedFamily = authorInfo.familyName
+    .toLowerCase()
+    .replace(/[^a-z]/g, '');
+
+  var normalizedDisplay = authorInfo.displayName
+    .toLowerCase()
+    .replace(/[^a-z]/g, '');
+
+  return (
+    (
+      normalizedFamily === 'he' &&
+      (
+        normalizedGiven === 'tiantian' ||
+        normalizedGiven === 'tt'
+      )
+    ) ||
+    normalizedDisplay === 'tthe'
+  );
+}
+
+function formatAuthors(authorString) {
+  var authors = String(authorString || '')
+    .split(/\s+and\s+/i)
+    .map(parseAuthorName)
+    .filter(function (authorInfo) {
+      return Boolean(authorInfo.displayName);
+    })
+    .map(function (authorInfo) {
+      var safeName = escapeHtml(authorInfo.displayName);
+
+      return isPersonalAuthor(authorInfo)
+        ? '<strong>' + safeName + '</strong>'
+        : safeName;
+    });
+
+  if (authors.length === 0) {
+    return '';
+  }
+
+  if (authors.length === 1) {
+    return authors[0];
+  }
+
+  if (authors.length === 2) {
+    return authors[0] + ' and ' + authors[1];
+  }
+
+  return (
+    authors.slice(0, -1).join(', ') +
+    ', and ' +
+    authors[authors.length - 1]
+  );
+}
 
         function normalizeEntry(entry) {
           var fields = entry.entryTags || {};
@@ -359,50 +543,204 @@
           return 'Other';
         }
 
-        function venueText(item) {
-          var venue = item.journal || item.booktitle || item.school || item.publisher || '';
-          var details = [];
-          if (venue) details.push('<em>' + escapeHtml(venue) + '</em>');
-          if (item.volume) details.push(escapeHtml(item.volume) + (item.number ? '(' + escapeHtml(item.number) + ')' : ''));
-          else if (item.number) details.push('(' + escapeHtml(item.number) + ')');
-          if (item.pages) details.push('pp. ' + escapeHtml(item.pages));
-          if (item.year) details.push(String(item.year));
-          if (item.note) details.push(escapeHtml(item.note));
-          return details.join(', ');
-        }
+
+		function ensureTerminalPeriod(text) {
+  text = String(text || '').trim();
+
+  if (!text) {
+    return '';
+  }
+
+  return /[.!?]$/.test(text) ? text : text + '.';
+}
+
+function formatPages(pages) {
+  pages = String(pages || '').trim();
+
+  if (!pages) {
+    return '';
+  }
+
+  return pages
+    .replace(/---/g, '—')
+    .replace(/--/g, '–');
+}
+
+function formatReference(item) {
+  var category = publicationCategory(item.type);
+  var authors = formatAuthors(item.author);
+  var title = '“' + escapeHtml(item.title) + ',”';
+  var components = [];
+
+  if (authors) {
+    components.push(authors);
+  }
+
+  components.push(title);
+
+  if (category === 'article') {
+    if (item.journal) {
+      components.push(
+        '<em>' + escapeHtml(item.journal) + '</em>'
+      );
+    }
+
+    if (item.volume) {
+      components.push(
+        'vol. ' + escapeHtml(item.volume)
+      );
+    }
+
+    if (item.number) {
+      components.push(
+        'no. ' + escapeHtml(item.number)
+      );
+    }
+
+    if (item.pages) {
+      components.push(
+        'pp. ' + escapeHtml(formatPages(item.pages))
+      );
+    }
+
+    if (item.year) {
+      components.push(String(item.year));
+    }
+  } else if (category === 'inproceedings') {
+    if (item.booktitle) {
+      components.push(
+        '<em>' + escapeHtml(item.booktitle) + '</em>'
+      );
+    }
+
+    if (item.pages) {
+      components.push(
+        'pp. ' + escapeHtml(formatPages(item.pages))
+      );
+    }
+
+    if (item.year) {
+      components.push(String(item.year));
+    }
+  } else if (category === 'thesis') {
+    if (item.type === 'phdthesis') {
+      components.push('Ph.D. dissertation');
+    } else if (item.type === 'mastersthesis') {
+      components.push('Master’s thesis');
+    } else {
+      components.push('Thesis');
+    }
+
+    if (item.school) {
+      components.push(escapeHtml(item.school));
+    }
+
+    if (item.year) {
+      components.push(String(item.year));
+    }
+  } else {
+    var venue =
+      item.journal ||
+      item.booktitle ||
+      item.school ||
+      item.publisher;
+
+    if (venue) {
+      components.push(
+        '<em>' + escapeHtml(venue) + '</em>'
+      );
+    }
+
+    if (item.volume) {
+      components.push(
+        'vol. ' + escapeHtml(item.volume)
+      );
+    }
+
+    if (item.pages) {
+      components.push(
+        'pp. ' + escapeHtml(formatPages(item.pages))
+      );
+    }
+
+    if (item.year) {
+      components.push(String(item.year));
+    }
+  }
+
+  if (item.note) {
+    components.push(escapeHtml(item.note));
+  }
+
+  return ensureTerminalPeriod(
+    components.filter(Boolean).join(', ')
+  );
+}
 
         function makeLink(url, label) {
-          if (!url) return '';
-          return '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' +
-                 escapeHtml(label) + '</a>';
-        }
+  if (!url) {
+    return '';
+  }
+
+  return [
+    '<a href="',
+      escapeHtml(url),
+      '" target="_blank" rel="noopener noreferrer">',
+      '[',
+      escapeHtml(label),
+      ']',
+    '</a>'
+  ].join('');
+}
 
         function publicationLinks(item) {
-          var links = [];
-          if (item.pdf) links.push(makeLink(item.pdf, 'PDF'));
-          if (item.code) links.push(makeLink(item.code, 'Code'));
-          if (item.url) links.push(makeLink(item.url, 'Link'));
-          if (item.doi) {
-            var doiUrl = /^https?:\/\//i.test(item.doi) ? item.doi : 'https://doi.org/' + item.doi;
-            links.push(makeLink(doiUrl, 'DOI'));
-          }
-          return links.filter(Boolean).join(' ');
-        }
+  var links = [];
+  var usedUrls = {};
 
-        function renderPublication(item) {
-          var links = publicationLinks(item);
-          return [
-            '<div class="publication-item">',
-              '<div class="publication-title">', escapeHtml(item.title), '</div>',
-              '<div class="publication-authors">', formatAuthors(item.author), '</div>',
-              '<div class="publication-venue">',
-                '<span class="publication-badge">', escapeHtml(typeLabel(item.type)), '</span>',
-                venueText(item),
-              '</div>',
-              links ? '<div class="publication-links">' + links + '</div>' : '',
-            '</div>'
-          ].join('');
-        }
+  function addLink(url, label) {
+    if (!url || usedUrls[url]) {
+      return;
+    }
+
+    usedUrls[url] = true;
+    links.push(makeLink(url, label));
+  }
+
+  addLink(item.pdf, 'PDF');
+  addLink(item.code, 'Code');
+  addLink(item.url, 'Link');
+
+  if (item.doi) {
+    var doiUrl = /^https?:\/\//i.test(item.doi)
+      ? item.doi
+      : 'https://doi.org/' + item.doi;
+
+    addLink(doiUrl, 'DOI');
+  }
+
+  return links.filter(Boolean).join(' ');
+}
+
+        function renderPublication(item, index) {
+  var links = publicationLinks(item);
+  var reference = formatReference(item);
+
+  return [
+    '<div class="publication-item">',
+      '<div class="publication-number">',
+        '[' + index + ']',
+      '</div>',
+      '<div class="publication-reference">',
+        reference,
+        links
+          ? '<span class="publication-links"> ' +
+              links +
+            '</span>'
+          : '',
+      '</div>',
+    '</div>'
+  ].join('');
+}
 
         function render(items) {
           var list = document.getElementById('publication-list');
@@ -428,10 +766,28 @@
             return Number(b) - Number(a);
           });
 
-          list.innerHTML = sortedYears.map(function (year) {
-            return '<h3 class="publication-year">' + escapeHtml(year) + '</h3>' +
-                   years[year].map(renderPublication).join('');
-          }).join('');
+          var publicationIndex = 1;
+
+list.innerHTML = sortedYears.map(function (year) {
+  var yearPublications = years[year]
+    .map(function (item) {
+      var html = renderPublication(
+        item,
+        publicationIndex
+      );
+
+      publicationIndex += 1;
+      return html;
+    })
+    .join('');
+
+  return [
+    '<h3 class="publication-year">',
+      escapeHtml(year),
+    '</h3>',
+    yearPublications
+  ].join('');
+}).join('');
         }
 
         function applyFilters() {
