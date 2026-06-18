@@ -5,8 +5,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Academic homepage of Tiantian He, featuring research on graph learning, foundation models, data-centric AI, and AI for scientific discovery.">
+    <meta name="author" content="Tiantian He">
 
     <title>Tiantian He (贺田田)</title>
 
@@ -895,7 +895,9 @@
       <a class="navbar-brand js-scroll-trigger" href="#page-top">
         <span class="d-block d-lg-none">AI, Data Mining, Data-Centric Transfer Optimization</span>
         <span class="d-none d-lg-block">
-          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/Image.png" alt="">
+          <img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+               src="img/Image.png"
+               alt="Portrait of Tiantian He">
         </span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -910,7 +912,7 @@
             <a class="nav-link js-scroll-trigger" href="#publications">Publications</a>
           </li>
 	  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#experience">Working Experience</a>
+            <a class="nav-link js-scroll-trigger" href="#experience">Professional Experience</a>
           </li>
 	  <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#supervision">Group Members &amp; Alumni</a>
@@ -927,7 +929,7 @@
 
     <div class="container-fluid p-0">
 
-      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="about">
   <div class="my-auto about-content">
     <h1 class="mb-3">
       <span class="text-capitalize">Tiantian He</span>
@@ -936,7 +938,7 @@
 
     <div class="about-affiliation mb-4">
       <div class="about-position">
-        Senior Research Scientist and Investigator
+        Senior Research Scientist and Early Career Investigator
       </div>
 
       <div class="about-institution">
@@ -954,7 +956,7 @@
 
     <p class="about-bio">
       <strong>
-        I am a Senior Research Scientist and Investigator at A*STAR,
+        I am a Senior Research Scientist and Early Career Investigator at A*STAR,
         Singapore.
       </strong>
       I received my Ph.D. degree from The Hong Kong Polytechnic University
@@ -999,8 +1001,6 @@
 
   </div>
 </section>
-	  
-      <div class="tlinks">Collect from <a href="https://he-tiantian.github.io/" > </a></div>
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="publications">
         <div class="w-100">
@@ -1036,14 +1036,14 @@
 
 <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
   <div class="my-auto">
-    <h2 class="section-title">Working Experience</h2>
+    <h2 class="section-title">Professional Experience</h2>
 
     <div class="experience-timeline">
 
       <div class="resume-item d-flex flex-column flex-md-row mb-3">
         <div class="resume-content mr-auto">
           <h3 class="mb-0">
-            Senior Research Scientist and Early Career PI
+            Senior Research Scientist and Early Career Investigator
           </h3>
           <div class="subheading mb-1">
             CFAR, IHPC, SIMTech, A*STAR
@@ -1393,7 +1393,7 @@
         </div>
 
         <div class="card-content">
-          <h3 class="card-title">Invited Journal Reviewing</h3>
+          <h3 class="card-title">Journal Reviewing</h3>
 
           <p class="journal-list">
             <span>Artificial Intelligence</span>
@@ -1443,8 +1443,8 @@
           </div>
 
           <div>
-            <h3 class="card-title">Postdoctoral Research Fellows</h3>
-            <span class="opening-status">Two positions available</span>
+            <h3 class="card-title">Postdoctoral Research Fellow</h3>
+            <span class="opening-status">One position available</span>
           </div>
         </div>
 
@@ -1488,10 +1488,10 @@
         </div>
 
         <p>
-          We welcome Ph.D. students and researchers interested in short-term
+          We welcome Ph.D. students and researchers interested in short-, or long-term
           visits supported by national programmes, including the China
-          Scholarship Council, or by research projects from either research
-          group.
+          Scholarship Council, or by research projects from their home
+          institutions or my group.
         </p>
 
         <h4 class="opening-subtitle">Relevant research interests</h4>
@@ -1571,12 +1571,6 @@
             .replace(/~/g, ' ')
             .replace(/\s+/g, ' ')
             .trim();
-        }
-
-        function isPersonalName(name) {
-          return PERSONAL_NAME_PATTERNS.some(function (pattern) {
-            return pattern.test(name);
-          });
         }
 
 		function initialsFromGivenName(givenName) {
@@ -1746,15 +1740,6 @@ function formatAuthors(authorString) {
           if (type.indexOf('thesis') !== -1) return 'thesis';
           return 'other';
         }
-
-        function typeLabel(type) {
-          var category = publicationCategory(type);
-          if (category === 'article') return 'Journal';
-          if (category === 'inproceedings') return 'Conference';
-          if (category === 'thesis') return 'Thesis';
-          return 'Other';
-        }
-
 
 		function ensureTerminalPeriod(text) {
   text = String(text || '').trim();
