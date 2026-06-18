@@ -335,13 +335,37 @@
   padding-top: 4rem !important;
   padding-bottom: 4rem !important;
 }
-.resume-section + .resume-section {
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-}
 
 .resume-section + .resume-section {
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
+
+@media (max-width: 991.98px) {
+  .resume-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+    scroll-margin-top: 80px;
+  }
+
+  #about.resume-section {
+    min-height: auto !important;
+    padding-top: 4rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .section-title {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.55rem;
+  }
+
+  .section-title::after {
+    width: 44px;
+    height: 3px;
+  }
+}
+
 
 </style>
 
