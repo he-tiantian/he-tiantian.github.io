@@ -92,6 +92,16 @@
     .publication-item {
       line-height: 1.55;
     }
+
+	.section-title {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.55rem;
+    }
+
+    .section-title::after {
+    width: 44px;
+    height: 3px;
+    }
   }
 
   /* =========================
@@ -286,6 +296,32 @@
   }
 }
 
+  ```css
+/* =========================
+   Section titles
+   ========================= */
+
+.section-title {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.7rem;
+  color: #343a40;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 52px;
+  height: 3px;
+  border-radius: 999px;
+  background-color: #bd5d38;
+}
+
+
+
 </style>
 
   </head>
@@ -405,7 +441,7 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="publications">
         <div class="w-100">
-          <h2 class="mb-5">Publications</h2>
+          <h2 class="section-title">Publications</h2>
           <div class="publication-toolbar">
   <div class="form-row">
     <div class="col-md-4 mb-2">
@@ -435,7 +471,7 @@
 
 <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
         <div class="my-auto">
-          <h2 class="mb-5">Working Experience</h2>
+          <h2 class="section-title">Working Experience</h2>
 
         <div class="resume-item d-flex flex-column flex-md-row mb-2">
             <div class="resume-content mr-auto">
@@ -509,7 +545,7 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="supervision">
         <div class="my-auto">
-          <h2 class="mb-5">Group Members</h2>
+          <h2 class="section-title">Group Members</h2>
           <ul class="fa-ul mb-0">
 		  <b>I had the privilege to work with these talented members in my group:</b><br><br>
 		  <b>Postdoctoral Researcher: </b><a href="https://scholar.google.com/citations?user=iBUKrBAAAAAJ&hl=en">Yuanqiao Zhang</a> (A*STAR/Xidian, 2025-)
@@ -524,7 +560,7 @@
 		  
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="services">
         <div class="my-auto">
-          <h2 class="mb-5">Academic Services</h2>
+          <h2 class="section-title">Academic Services</h2>
           <ul class="fa-ul mb-0">
 	    <li>
 	    <i class="fa-li fa fa-trophy text-warning"></i>
@@ -550,7 +586,7 @@
 
 		<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="openning">
         <div class="my-auto">
-          <h2 class="mb-5">Job Opening</h2>
+          <h2 class="section-title">Job Opening</h2>
           <ul class="fa-ul mb-0">
 	    <li>
         <b>Postdoctoral research fellow</b></li>
