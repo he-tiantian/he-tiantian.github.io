@@ -356,6 +356,117 @@
   }
 }
 
+/* =========================
+   Working Experience timeline
+   ========================= */
+
+.experience-timeline {
+  position: relative;
+  max-width: 1000px;
+  padding-left: 1.6rem;
+}
+
+.experience-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  bottom: 0.45rem;
+  left: 0.38rem;
+  width: 2px;
+  background-color: rgba(189, 93, 56, 0.22);
+}
+
+#experience .resume-item {
+  position: relative;
+  margin-bottom: 1.5rem !important;
+  padding: 0 0 0.25rem 1rem;
+}
+
+#experience .resume-item:last-child {
+  margin-bottom: 0 !important;
+}
+
+#experience .resume-item::before {
+  content: "";
+  position: absolute;
+  top: 0.42rem;
+  left: -1.58rem;
+  width: 0.82rem;
+  height: 0.82rem;
+  border: 2px solid #bd5d38;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(189, 93, 56, 0.08);
+}
+
+#experience .resume-content {
+  padding-right: 1.5rem;
+}
+
+#experience .resume-content h3 {
+  margin-bottom: 0.25rem;
+  color: #343a40;
+  font-size: 1.22rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+#experience .subheading {
+  margin-bottom: 0 !important;
+  color: #6c757d;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#experience .resume-date {
+  flex: 0 0 170px;
+  min-width: 170px;
+  padding-top: 0.15rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+#experience .resume-date .text-primary {
+  color: #bd5d38 !important;
+}
+
+@media (max-width: 767.98px) {
+  .experience-timeline {
+    padding-left: 1.35rem;
+  }
+
+  .experience-timeline::before {
+    left: 0.3rem;
+  }
+
+  #experience .resume-item {
+    margin-bottom: 1.35rem !important;
+    padding-left: 0.85rem;
+  }
+
+  #experience .resume-item::before {
+    left: -1.38rem;
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  #experience .resume-content {
+    padding-right: 0;
+  }
+
+  #experience .resume-content h3 {
+    font-size: 1.12rem;
+  }
+
+  #experience .resume-date {
+    min-width: 0;
+    margin-top: 0.35rem;
+    padding-top: 0;
+    text-align: left !important;
+    font-size: 0.88rem;
+  }
+}
 
 </style>
 
@@ -504,79 +615,123 @@
         </div>
       </section>
 
+
+
 <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
-        <div class="my-auto">
-          <h2 class="section-title">Working Experience</h2>
+  <div class="my-auto">
+    <h2 class="section-title">Working Experience</h2>
 
-        <div class="resume-item d-flex flex-column flex-md-row mb-2">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Senior Research Scientist and Early Career PI</h3>
-              <div class="subheading mb-2">CFAR, IHPC, SIMTech, A*STAR</div>
-            </div>
-	    <div class="resume-date text-md-right">
-              <span class="text-primary">Jul 2025 - </span>
-            </div>
-          </div>  
-		
-		<div class="resume-item d-flex flex-column flex-md-row mb-2">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Senior Research Scientist</h3>
-              <div class="subheading mb-2">CFAR, IHPC, SIMTech, A*STAR</div>
-            </div>
-	    <div class="resume-date text-md-right">
-              <span class="text-primary">Jul 2023 - Jul 2025</span>
-            </div>
+    <div class="experience-timeline">
+
+      <div class="resume-item d-flex flex-column flex-md-row mb-3">
+        <div class="resume-content mr-auto">
+          <h3 class="mb-0">
+            Senior Research Scientist and Early Career PI
+          </h3>
+          <div class="subheading mb-1">
+            CFAR, IHPC, SIMTech, A*STAR
           </div>
-		
-	  <div class="resume-item d-flex flex-column flex-md-row mb-2">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Research Scientist</h3>
-              <div class="subheading mb-2">CFAR, IHPC, A*STAR</div>
-            </div>
-	    <div class="resume-date text-md-right">
-              <span class="text-primary">Nov 2021 - Jun 2023</span>
-            </div>
-		  </div>
-		
-	  <div class="resume-item d-flex flex-column flex-md-row mb-2">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Research Fellow</h3>
-              <div class="subheading mb-2">DSAIR, School of Computer Science and Engineering, Nanyang Technological University</div>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">Jan 2019 - Oct 2021</span>
-            </div>
-		  </div>
+        </div>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-2">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Postdoctral Research Assistant</h3>
-              <div class="subheading mb-2">The Hong Kong Polytechnic Unversity</div>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">Nov 2017 - Sep 2018</span>
-            </div>
-			  </div>
+        <div class="resume-date text-md-right">
+          <span class="text-primary">Jul 2025 – Present</span>
+        </div>
+      </div>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-2">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Research Assistant</h3>
-              <div class="subheading mb-2">The Hong Kong Polytechnic University</div>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">Jun 2017 - Sep 2017</span>
-            </div>
-			  </div>
-          <div class="resume-item d-flex flex-column flex-md-row mb-2">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Research Assistant</h3>
-              <div class="subheading mb-2">The Hong Kong Polytechnic University</div>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">Mar 2012 - Aug 2012</span>
-            </div>
+      <div class="resume-item d-flex flex-column flex-md-row mb-3">
+        <div class="resume-content mr-auto">
+          <h3 class="mb-0">
+            Senior Research Scientist
+          </h3>
+          <div class="subheading mb-1">
+            CFAR, IHPC, SIMTech, A*STAR
           </div>
-      </section>
+        </div>
+
+        <div class="resume-date text-md-right">
+          <span class="text-primary">Jul 2023 – Jul 2025</span>
+        </div>
+      </div>
+
+      <div class="resume-item d-flex flex-column flex-md-row mb-3">
+        <div class="resume-content mr-auto">
+          <h3 class="mb-0">
+            Research Scientist
+          </h3>
+          <div class="subheading mb-1">
+            CFAR, IHPC, A*STAR
+          </div>
+        </div>
+
+        <div class="resume-date text-md-right">
+          <span class="text-primary">Nov 2021 – Jun 2023</span>
+        </div>
+      </div>
+
+      <div class="resume-item d-flex flex-column flex-md-row mb-3">
+        <div class="resume-content mr-auto">
+          <h3 class="mb-0">
+            Research Fellow
+          </h3>
+          <div class="subheading mb-1">
+            DSAIR, School of Computer Science and Engineering,
+            Nanyang Technological University
+          </div>
+        </div>
+
+        <div class="resume-date text-md-right">
+          <span class="text-primary">Jan 2019 – Oct 2021</span>
+        </div>
+      </div>
+
+      <div class="resume-item d-flex flex-column flex-md-row mb-3">
+        <div class="resume-content mr-auto">
+          <h3 class="mb-0">
+            Postdoctoral Research Assistant
+          </h3>
+          <div class="subheading mb-1">
+            The Hong Kong Polytechnic University
+          </div>
+        </div>
+
+        <div class="resume-date text-md-right">
+          <span class="text-primary">Nov 2017 – Sep 2018</span>
+        </div>
+      </div>
+
+      <div class="resume-item d-flex flex-column flex-md-row mb-3">
+        <div class="resume-content mr-auto">
+          <h3 class="mb-0">
+            Research Assistant
+          </h3>
+          <div class="subheading mb-1">
+            The Hong Kong Polytechnic University
+          </div>
+        </div>
+
+        <div class="resume-date text-md-right">
+          <span class="text-primary">Jun 2017 – Sep 2017</span>
+        </div>
+      </div>
+
+      <div class="resume-item d-flex flex-column flex-md-row mb-3">
+        <div class="resume-content mr-auto">
+          <h3 class="mb-0">
+            Research Assistant
+          </h3>
+          <div class="subheading mb-1">
+            The Hong Kong Polytechnic University
+          </div>
+        </div>
+
+        <div class="resume-date text-md-right">
+          <span class="text-primary">Mar 2012 – Aug 2012</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="supervision">
         <div class="my-auto">
