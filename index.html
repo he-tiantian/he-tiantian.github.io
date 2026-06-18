@@ -325,6 +325,7 @@
         'use strict';
 
         var BIBTEX_FILE = 'publications.bib';
+		var PUBLICATION_YEAR_CUTOFF = 2018;
         var PERSONAL_NAME_PATTERNS = [
           /\bTiantian\s+He\b/i,
           /\bHe\s*,\s*Tiantian\b/i,
@@ -739,52 +740,74 @@ function formatReference(item) {
 }
 
         function render(items) {
-          var list = document.getElementById('publication-list');
-          var status = document.getElementById('publication-status');
+  var list = document.getElementById('publication-list');
+  var status = document.getElementById('publication-status');
 
-          if (!items.length) {
-            list.innerHTML = '';
-            status.textContent = 'No publications found.';
-            return;
-          }
+  if (!items.length) {
+    list.innerHTML = '';
+    status.textContent = 'No publications found.';
+    return;
+  }
 
-          status.textContent = items.length + ' publication' + (items.length === 1 ? '' : 's');
-          var years = {};
-          items.forEach(function (item) {
-            var yearKey = item.year || 'Other';
-            if (!years[yearKey]) years[yearKey] = [];
-            years[yearKey].push(item);
-          });
+  status.textContent =
+    items.length +
+    ' publication' +
+    (items.length === 1 ? '' : 's');
 
-          var sortedYears = Object.keys(years).sort(function (a, b) {
-            if (a === 'Other') return 1;
-            if (b === 'Other') return -1;
-            return Number(b) - Number(a);
-          });
+  var years = {};
+  var beforeLabel = 'Before ' + PUBLICATION_YEAR_CUTOFF;
 
-          var publicationIndex = 1;
+  items.forEach(function (item) {
+    var yearKey;
 
-list.innerHTML = sortedYears.map(function (year) {
-  var yearPublications = years[year]
-    .map(function (item) {
-      var html = renderPublication(
-        item,
-        publicationIndex
-      );
+    if (!item.year) {
+      yearKey = 'Other';
+    } else if (item.year < PUBLICATION_YEAR_CUTOFF) {
+      yearKey = beforeLabel;
+    } else {
+      yearKey = String(item.year);
+    }
 
-      publicationIndex += 1;
-      return html;
-    })
-    .join('');
+    if (!years[yearKey]) {
+      years[yearKey] = [];
+    }
 
-  return [
-    '<h3 class="publication-year">',
-      escapeHtml(year),
-    '</h3>',
-    yearPublications
-  ].join('');
-}).join('');
-        }
+    years[yearKey].push(item);
+  });
+
+  var sortedYears = Object.keys(years).sort(function (a, b) {
+    if (a === 'Other') return 1;
+    if (b === 'Other') return -1;
+
+    if (a === beforeLabel) return 1;
+    if (b === beforeLabel) return -1;
+
+    return Number(b) - Number(a);
+  });
+
+  var publicationIndex = 1;
+
+  list.innerHTML = sortedYears.map(function (year) {
+    var yearPublications = years[year]
+      .map(function (item) {
+        var html = renderPublication(
+          item,
+          publicationIndex
+        );
+
+        publicationIndex += 1;
+        return html;
+      })
+      .join('');
+
+    return [
+      '<h3 class="publication-year">',
+        escapeHtml(year),
+      '</h3>',
+      yearPublications
+    ].join('');
+  }).join('');
+}
 
         function applyFilters() {
   var type = document.getElementById('publication-filter').value;
