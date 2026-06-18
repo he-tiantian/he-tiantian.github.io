@@ -468,6 +468,143 @@
   }
 }
 
+/* =========================
+   Group Members
+   ========================= */
+
+.members-intro {
+  max-width: 900px;
+  margin-bottom: 1.75rem;
+  color: #6c757d;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.members-container {
+  max-width: 1000px;
+}
+
+.member-group {
+  margin-bottom: 1.5rem;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 4px solid rgba(189, 93, 56, 0.65);
+  border-radius: 0.4rem;
+  background-color: #ffffff;
+}
+
+.member-group:last-child {
+  margin-bottom: 0;
+}
+
+.member-group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.9rem;
+  color: #343a40;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.member-group-title i {
+  width: 1.1rem;
+  color: #bd5d38;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.member-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.member-item {
+  position: relative;
+  margin-bottom: 0.65rem;
+  padding-left: 1rem;
+  color: #495057;
+  line-height: 1.6;
+}
+
+.member-item:last-child {
+  margin-bottom: 0;
+}
+
+.member-item::before {
+  content: "";
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(189, 93, 56, 0.75);
+}
+
+.member-item a,
+.member-name {
+  color: #343a40;
+  font-weight: 700;
+}
+
+.member-item a {
+  text-decoration: none;
+}
+
+.member-item a:hover {
+  color: #bd5d38;
+  text-decoration: underline;
+}
+
+.member-meta {
+  margin-left: 0.35rem;
+  color: #6c757d;
+  font-size: 0.94rem;
+}
+
+.member-group-alumni {
+  background-color: rgba(0, 0, 0, 0.012);
+  border-left-color: rgba(108, 117, 125, 0.55);
+}
+
+.member-group-alumni .member-group-title i {
+  color: #6c757d;
+}
+
+@media (max-width: 575.98px) {
+  .members-intro {
+    margin-bottom: 1.4rem;
+    font-size: 0.96rem;
+  }
+
+  .member-group {
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+
+  .member-group-title {
+    margin-bottom: 0.75rem;
+    font-size: 1.04rem;
+  }
+
+  .member-item {
+    margin-bottom: 0.75rem;
+    padding-left: 0.9rem;
+  }
+
+  .member-meta {
+    display: block;
+    margin-top: 0.1rem;
+    margin-left: 0;
+    font-size: 0.9rem;
+  }
+}
+
+
+		  
 </style>
 
   </head>
@@ -733,20 +870,192 @@
   </div>
 </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="supervision">
-        <div class="my-auto">
-          <h2 class="section-title">Group Members</h2>
-          <ul class="fa-ul mb-0">
-		  <b>I had the privilege to work with these talented members in my group:</b><br><br>
-		  <b>Postdoctoral Researcher: </b><a href="https://scholar.google.com/citations?user=iBUKrBAAAAAJ&hl=en">Yuanqiao Zhang</a> (A*STAR/Xidian, 2025-)
-	      <br><br>
-		  <b>PhD Students: </b> Jian Zhuang (DUT, 2025-), Liran Zhou (DUT, 2024-), Sihan Zhou (DUT, 2025-) <br><br>  
-		  <b>Exchange Students: </b> Bo Li (Xidian, CSC, 2025-), </b>Jiayi Li (CSU, CSC, 2025-), </b><a href="https://scholar.google.com/citations?user=Cj3DhNAAAAAJ&hl=en">Menghao Tan</a> (Xidian, CSC, 2025-)<br><br>
-		  <b>Alumni: </b><a href="https://scholar.google.com/citations?user=Ea_Tt6cAAAAJ&hl=en">Haicang Zhou</a> (PhD, NTU, 2022-2025, now Bytedance Singapore), <a href="https://scholar.google.com/citations?user=jlQGt60AAAAJ&hl=en">Fanghui Bi</a> (PhD, SWU 2022-2025, now NetEase China), Leming Zhou (PhD, SWU, 2024-2026) <br> 
-		  </b><a href="https://scholar.google.com/citations?user=8nRNKrkAAAAJ&hl=zh-CN">Huanyu Yang</a> (Chongqing U, CSC, 2025-2026), </b><a href="https://scholar.google.com/citations?user=DEUmArsAAAAJ&hl=en">Yu Lei</a> (Yanshan U, CSC, 2024-2026), </b><a href="https://scholar.google.com/citations?user=I_5IYgkAAAAJ&hl=en">Chen Li</a> (Yanshan U, CSC, 2025), </b><a href="https://scholar.google.com.hk/citations?user=P8crT5AAAAAJ&hl=zh-CN">Ben Cao</a> (DUT, CSC, 2023-2024)<br>
-		  Zuo Wang (MSc, SWU, 2023-2026), Zhixuan Duan (MSc, SWU, 2022-2025)
-		  <br><br>
+      
+
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="supervision">
+  <div class="my-auto">
+    <h2 class="section-title">Group Members</h2>
+
+    <p class="members-intro">
+      I have had the privilege of working with the following talented
+      researchers and students in my group.
+    </p>
+
+    <div class="members-container">
+
+      <div class="member-group">
+        <h3 class="member-group-title">
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          Postdoctoral Researcher
+        </h3>
+
+        <ul class="member-list">
+          <li class="member-item">
+            <a href="https://scholar.google.com/citations?user=iBUKrBAAAAAJ&amp;hl=en"
+               target="_blank"
+               rel="noopener noreferrer">
+              Yuanqiao Zhang
+            </a>
+            <span class="member-meta">A*STAR / Xidian University, 2025–Present</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="member-group">
+        <h3 class="member-group-title">
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          Ph.D. Students
+        </h3>
+
+        <ul class="member-list">
+          <li class="member-item">
+            <span class="member-name">Jian Zhuang</span>
+            <span class="member-meta">Dalian University of Technology, 2025–Present</span>
+          </li>
+
+          <li class="member-item">
+            <span class="member-name">Liran Zhou</span>
+            <span class="member-meta">Dalian University of Technology, 2024–Present</span>
+          </li>
+
+          <li class="member-item">
+            <span class="member-name">Sihan Zhou</span>
+            <span class="member-meta">Dalian University of Technology, 2025–Present</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="member-group">
+        <h3 class="member-group-title">
+          <i class="fa fa-exchange" aria-hidden="true"></i>
+          Exchange Students
+        </h3>
+
+        <ul class="member-list">
+          <li class="member-item">
+            <span class="member-name">Bo Li</span>
+            <span class="member-meta">Xidian University, CSC, 2025–Present</span>
+          </li>
+
+          <li class="member-item">
+            <span class="member-name">Jiayi Li</span>
+            <span class="member-meta">Central South University, CSC, 2025–Present</span>
+          </li>
+
+          <li class="member-item">
+            <a href="https://scholar.google.com/citations?user=Cj3DhNAAAAAJ&amp;hl=en"
+               target="_blank"
+               rel="noopener noreferrer">
+              Menghao Tan
+            </a>
+            <span class="member-meta">Xidian University, CSC, 2025–Present</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="member-group member-group-alumni">
+        <h3 class="member-group-title">
+          <i class="fa fa-users" aria-hidden="true"></i>
+          Alumni
+        </h3>
+
+        <ul class="member-list">
+          <li class="member-item">
+            <a href="https://scholar.google.com/citations?user=Ea_Tt6cAAAAJ&amp;hl=en"
+               target="_blank"
+               rel="noopener noreferrer">
+              Haicang Zhou
+            </a>
+            <span class="member-meta">
+              Ph.D., Nanyang Technological University, 2022–2025;
+              now at ByteDance Singapore
+            </span>
+          </li>
+
+          <li class="member-item">
+            <a href="https://scholar.google.com/citations?user=jlQGt60AAAAJ&amp;hl=en"
+               target="_blank"
+               rel="noopener noreferrer">
+              Fanghui Bi
+            </a>
+            <span class="member-meta">
+              Ph.D., Southwest University, 2022–2025;
+              now at NetEase China
+            </span>
+          </li>
+
+          <li class="member-item">
+            <span class="member-name">Leming Zhou</span>
+            <span class="member-meta">
+              Ph.D., Southwest University, 2024–2026
+            </span>
+          </li>
+
+          <li class="member-item">
+            <a href="https://scholar.google.com/citations?user=8nRNKrkAAAAJ&amp;hl=zh-CN"
+               target="_blank"
+               rel="noopener noreferrer">
+              Huanyu Yang
+            </a>
+            <span class="member-meta">
+              Chongqing University, CSC, 2025–2026
+            </span>
+          </li>
+
+          <li class="member-item">
+            <a href="https://scholar.google.com/citations?user=DEUmArsAAAAJ&amp;hl=en"
+               target="_blank"
+               rel="noopener noreferrer">
+              Yu Lei
+            </a>
+            <span class="member-meta">
+              Yanshan University, CSC, 2024–2026
+            </span>
+          </li>
+
+          <li class="member-item">
+            <a href="https://scholar.google.com/citations?user=I_5IYgkAAAAJ&amp;hl=en"
+               target="_blank"
+               rel="noopener noreferrer">
+              Chen Li
+            </a>
+            <span class="member-meta">
+              Yanshan University, CSC, 2025
+            </span>
+          </li>
+
+          <li class="member-item">
+            <a href="https://scholar.google.com.hk/citations?user=P8crT5AAAAAJ&amp;hl=zh-CN"
+               target="_blank"
+               rel="noopener noreferrer">
+              Ben Cao
+            </a>
+            <span class="member-meta">
+              Dalian University of Technology, CSC, 2023–2024
+            </span>
+          </li>
+
+          <li class="member-item">
+            <span class="member-name">Zuo Wang</span>
+            <span class="member-meta">
+              M.Sc., Southwest University, 2023–2026
+            </span>
+          </li>
+
+          <li class="member-item">
+            <span class="member-name">Zhixuan Duan</span>
+            <span class="member-meta">
+              M.Sc., Southwest University, 2022–2025
+            </span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
 </section>
+
+	
 		  
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="services">
         <div class="my-auto">
