@@ -893,7 +893,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">
-        <span class="d-block d-lg-none">AI, Data Mining, Data-Centric Transfer Optimization</span>
+        <span class="d-block d-lg-none">Tiantian He</span>
         <span class="d-none d-lg-block">
           <img class="img-fluid img-profile rounded-circle mx-auto mb-2"
                src="img/Image.png"
@@ -980,21 +980,21 @@
 
     <div class="about-links">
       <a href="mailto:tiantian.he@outlook.com">
-        <i class="fa fa-envelope"></i>
+        <i class="fa fa-envelope" aria-hidden="true"></i>
         Email
       </a>
 
       <a href="https://scholar.google.com/citations?user=zD5CrvwAAAAJ&amp;hl=en"
          target="_blank"
          rel="noopener noreferrer">
-        <i class="fa fa-graduation-cap"></i>
+        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
         Google Scholar
       </a>
 
       <a href="https://github.com/he-tiantian/"
          target="_blank"
          rel="noopener noreferrer">
-        <i class="fa fa-github"></i>
+        <i class="fa fa-github" aria-hidden="true"></i>
         GitHub
       </a>
     </div>
@@ -1020,13 +1020,15 @@
   </div>
 </div>
 
-          <div id="publication-status">Loading publications...</div>
+          <div id="publication-status" role="status" aria-live="polite">
+               Loading publications...
+          </div>   
           <div id="publication-list" aria-live="polite"></div>
 
           <p class="mt-4 mb-0">
             <a href="https://scholar.google.com/citations?user=zD5CrvwAAAAJ&amp;hl=en"
                target="_blank" rel="noopener noreferrer">
-              <b>Full publication profile also on Google Scholar.</b>
+              <strong>View all publications on Google Scholar.</strong>
             </a>
           </p>
         </div>
@@ -1488,7 +1490,7 @@
         </div>
 
         <p>
-          We welcome Ph.D. students and researchers interested in short-, or long-term
+          We welcome Ph.D. students and researchers interested in short- or long-term
           visits supported by national programmes, including the China
           Scholarship Council, or by research projects from their home
           institutions or my group.
@@ -1541,11 +1543,6 @@
 
         var BIBTEX_FILE = 'publications.bib';
 		var PUBLICATION_YEAR_CUTOFF = 2018;
-        var PERSONAL_NAME_PATTERNS = [
-          /\bTiantian\s+He\b/i,
-          /\bHe\s*,\s*Tiantian\b/i,
-          /\bT\.?\s*T\.?\s*He\b/i
-        ];
         var publications = [];
 
         function escapeHtml(value) {
