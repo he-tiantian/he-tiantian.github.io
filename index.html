@@ -60,6 +60,61 @@ body {
   background-color: #a64f30 !important;
 }
 
+/* =========================
+   Navigation states
+   ========================= */
+
+#sideNav .navbar-nav {
+  width: 100%;
+}
+
+#sideNav .nav-item {
+  width: 100%;
+  margin-bottom: 0.15rem;
+}
+
+#sideNav .nav-link {
+  position: relative;
+  width: 100%;
+  padding: 0.55rem 1rem;
+  border-radius: 0.3rem;
+  color: rgba(255, 255, 255, 0.76);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+#sideNav .nav-link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.07);
+  transform: translateX(2px);
+}
+
+#sideNav .nav-link.active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.13);
+}
+
+#sideNav .nav-link::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 3px;
+  height: 0;
+  border-radius: 999px;
+  background-color: #ffffff;
+  transform: translateY(-50%);
+  transition: height 0.2s ease;
+}
+
+#sideNav .nav-link.active::before {
+  height: 60%;
+}
+
 #sideNav .nav-link {
   color: rgba(255, 255, 255, 0.78);
 }
@@ -947,7 +1002,19 @@ a:hover {
   }
 }
 
+@media (max-width: 991.98px) {
+  #sideNav .nav-link {
+    padding: 0.6rem 0.75rem;
+  }
 
+  #sideNav .nav-link:hover {
+    transform: none;
+  }
+
+  #sideNav .nav-link::before {
+    left: 0.1rem;
+  }
+}
 		  
 </style>
 
