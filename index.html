@@ -604,6 +604,226 @@
 }
 
 
+/* =========================
+   Academic Services and Job Openings
+   ========================= */
+
+.services-container,
+.openings-container {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 1000px;
+}
+
+.service-card,
+.opening-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 4px solid rgba(189, 93, 56, 0.68);
+  border-radius: 0.45rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.035);
+}
+
+.service-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1.2rem 1.3rem;
+}
+
+.opening-card {
+  padding: 1.3rem 1.4rem;
+}
+
+.service-card:hover,
+.opening-card:hover {
+  border-color: rgba(189, 93, 56, 0.3);
+  border-left-color: #bd5d38;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.065);
+}
+
+.card-icon {
+  display: flex;
+  flex: 0 0 2.35rem;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  background-color: rgba(189, 93, 56, 0.09);
+  color: #bd5d38;
+  font-size: 1rem;
+}
+
+.card-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.card-title {
+  margin: 0 0 0.7rem;
+  color: #343a40;
+  font-size: 1.13rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.service-card p,
+.opening-card p {
+  margin-bottom: 0;
+  color: #495057;
+  line-height: 1.7;
+}
+
+.service-subgroup + .service-subgroup {
+  margin-top: 1rem;
+}
+
+.service-subgroup h4,
+.opening-subtitle {
+  margin: 0 0 0.35rem;
+  color: #495057;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.journal-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.journal-list span {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid rgba(108, 117, 125, 0.2);
+  border-radius: 999px;
+  background-color: rgba(108, 117, 125, 0.045);
+  color: #5f6870;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.openings-intro {
+  max-width: 900px;
+  margin-bottom: 1.75rem;
+  color: #6c757d;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.opening-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.opening-card-header .card-title {
+  margin-bottom: 0.25rem;
+}
+
+.opening-status {
+  display: inline-block;
+  color: #bd5d38;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.opening-subtitle {
+  margin-top: 1.1rem;
+}
+
+.opening-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.4rem;
+  row-gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.opening-list li {
+  position: relative;
+  padding-left: 1rem;
+  color: #495057;
+  line-height: 1.55;
+}
+
+.opening-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.68em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(189, 93, 56, 0.75);
+}
+
+.opening-application {
+  margin-top: 1.1rem !important;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+/* Transition kept separate for readability */
+.service-card,
+.opening-card {
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+@media (max-width: 767.98px) {
+  .service-card {
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .opening-card {
+    padding: 1.05rem;
+  }
+
+  .opening-list {
+    grid-template-columns: 1fr;
+  }
+
+  .card-title {
+    font-size: 1.06rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .service-card {
+    display: block;
+  }
+
+  .service-card > .card-icon {
+    margin-bottom: 0.75rem;
+  }
+
+  .opening-card-header {
+    gap: 0.75rem;
+  }
+
+  .journal-list {
+    gap: 0.35rem;
+  }
+
+  .journal-list span {
+    padding: 0.22rem 0.48rem;
+    font-size: 0.8rem;
+  }
+}
+
+
 		  
 </style>
 
@@ -639,7 +859,7 @@
             <a class="nav-link js-scroll-trigger" href="#services">Academic Services</a>
           </li>
 		  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#openning">Job Opening</a>
+            <a class="nav-link js-scroll-trigger" href="#openings">Job Openings</a>
           </li>
         </ul>
       </div>
@@ -1057,43 +1277,188 @@
 
 	
 		  
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="services">
-        <div class="my-auto">
-          <h2 class="section-title">Academic Services</h2>
-          <ul class="fa-ul mb-0">
-	    <li>
-	    <i class="fa-li fa fa-trophy text-warning"></i>
-             <i class="fa-li fa fa-trophy text-warning"></i>
-              <b>Conference Organization and Program Committee Membership</b></li>
-	      <b>Chair</b><br>
-	      ICASSP 2026 (Area Chair), IJCNN 2025, 2026, 2027 (Area Chair), EITCE 2025 (Publicity Chair), ISMIS 2018 (Session Chair)<br>
-	      <b>PC Member</b><br>
-              ICML 2025, 2026, ICLR 2025, 2026, NeurIPS 2024, 2025, AISTATS 2025, 2026, AAAI 2026, BIBM 2023-2026, WI AI4SG 2021-2025, IJCAI DCM Workshop 2020, ICTAI 2019<br>
-	      <br>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-             <b>Journal Editorship</b><br>
-             Associate Editor: Memetic Computing (2025-)<br><br>
-            <li>
-	    <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-             <b>Invited Journal Reviewer</b><br>
-             AI, TPAMI, TKDE, TCYB, TNNLS, TSMC, TFS, TKDD, TCBB, TETCI, TNSE, TBD, TCSS, JAS, KAIS, BIB, Bioinformatics, Memetic Comp, Neurocomputing, Info Sci<br>
-		    <br>  
-            <li>
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="services">
+  <div class="my-auto">
+    <h2 class="section-title">Academic Services</h2>
+
+    <div class="services-container">
+
+      <article class="service-card">
+        <div class="card-icon" aria-hidden="true">
+          <i class="fa fa-sitemap"></i>
+        </div>
+
+        <div class="card-content">
+          <h3 class="card-title">
+            Conference Organization and Program Committees
+          </h3>
+
+          <div class="service-subgroup">
+            <h4>Leadership Roles</h4>
+            <p>
+              ICASSP 2026 (Area Chair); IJCNN 2025, 2026, and 2027
+              (Area Chair); EITCE 2025 (Publicity Chair); and ISMIS 2018
+              (Session Chair).
+            </p>
+          </div>
+
+          <div class="service-subgroup">
+            <h4>Program Committee Membership</h4>
+            <p>
+              ICML 2025 and 2026; ICLR 2025 and 2026; NeurIPS 2024 and
+              2025; AISTATS 2025 and 2026; AAAI 2026; BIBM 2023–2026;
+              WI AI4SG 2021–2025; IJCAI DCM Workshop 2020; and ICTAI 2019.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="card-icon" aria-hidden="true">
+          <i class="fa fa-pencil-square-o"></i>
+        </div>
+
+        <div class="card-content">
+          <h3 class="card-title">Journal Editorship</h3>
+
+          <p>
+            Associate Editor, <em>Memetic Computing</em>, 2025–Present.
+          </p>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="card-icon" aria-hidden="true">
+          <i class="fa fa-book"></i>
+        </div>
+
+        <div class="card-content">
+          <h3 class="card-title">Invited Journal Reviewing</h3>
+
+          <p class="journal-list">
+            <span>Artificial Intelligence</span>
+            <span>IEEE TPAMI</span>
+            <span>IEEE TKDE</span>
+            <span>IEEE TCYB</span>
+            <span>IEEE TNNLS</span>
+            <span>IEEE TSMC</span>
+            <span>IEEE TFS</span>
+            <span>ACM TKDD</span>
+            <span>IEEE TCBB</span>
+            <span>IEEE TETCI</span>
+            <span>IEEE TNSE</span>
+            <span>IEEE TBD</span>
+            <span>IEEE TCSS</span>
+            <span>Journal of Automation and Intelligence</span>
+            <span>Knowledge and Information Systems</span>
+            <span>Briefings in Bioinformatics</span>
+            <span>Bioinformatics</span>
+            <span>Memetic Computing</span>
+            <span>Neurocomputing</span>
+            <span>Information Sciences</span>
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </div>
 </section>
 
-		<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="openning">
-        <div class="my-auto">
-          <h2 class="section-title">Job Opening</h2>
-          <ul class="fa-ul mb-0">
-	    <li>
-        <b>Postdoctoral research fellow</b></li>
-	      One postdoctoral position is available in my group. This position is fully supported by research projects at the intersection of advanced machine learning and scientific applications. If your research interests lie in one or several of the following: Graph and geometric deep learning, Federated learning, Spatio-temporal and multi-modal learning, Foundation model fine-tuning and reasoning, and applications in Materials science and Catalyst discovery, Weather modeling, Lightning nowcasting, and Environmental risk forecasting, and you have a strong publication record in these fields, you are welcome to apply for these positions by sending me an email, attaching your CV.<br><br>
-        <b>Exchange student, Student intern, and Visiting scholar</b><br>
-          We are always seeking PhD students and researchers who want to further explore their research through short-term visits supported by national programs (e.g., CSC in China) or research projects (mine or those from your lab). If you work on one of the following areas: Graph and geometric deep learning, Federated learning, Spatio-temporal and multi-modal learning, Foundation model fine-tuning and reasoning, and are interested in joining my group, you are welcome to nominate me to host your visit by sending me an email, attaching your CV and a brief research statement.<br><br> 
-	    <li>
+
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="openings">
+  <div class="my-auto">
+    <h2 class="section-title">Job Openings</h2>
+
+    <p class="openings-intro">
+      We welcome talented researchers and students interested in advanced
+      machine learning and its scientific applications.
+    </p>
+
+    <div class="openings-container">
+
+      <article class="opening-card">
+        <div class="opening-card-header">
+          <div class="card-icon" aria-hidden="true">
+            <i class="fa fa-briefcase"></i>
+          </div>
+
+          <div>
+            <h3 class="card-title">Postdoctoral Research Fellows</h3>
+            <span class="opening-status">Two positions available</span>
+          </div>
+        </div>
+
+        <p>
+          Two fully funded postdoctoral positions are available in my group
+          for research at the intersection of advanced machine learning and
+          scientific applications.
+        </p>
+
+        <h4 class="opening-subtitle">Research areas</h4>
+
+        <ul class="opening-list">
+          <li>Graph and geometric deep learning</li>
+          <li>Federated learning</li>
+          <li>Spatiotemporal and multimodal learning</li>
+          <li>Foundation-model fine-tuning and reasoning</li>
+          <li>Materials science and catalyst discovery</li>
+          <li>Weather modelling and lightning nowcasting</li>
+          <li>Environmental risk forecasting</li>
+        </ul>
+
+        <p class="opening-application">
+          Applicants with a strong publication record in one or more of
+          these areas are welcome to apply by email with a CV and a brief
+          research statement.
+        </p>
+      </article>
+
+      <article class="opening-card">
+        <div class="opening-card-header">
+          <div class="card-icon" aria-hidden="true">
+            <i class="fa fa-graduation-cap"></i>
+          </div>
+
+          <div>
+            <h3 class="card-title">
+              Exchange Students, Research Interns, and Visiting Scholars
+            </h3>
+            <span class="opening-status">Applications welcomed year-round</span>
+          </div>
+        </div>
+
+        <p>
+          We welcome Ph.D. students and researchers interested in short-term
+          visits supported by national programmes, including the China
+          Scholarship Council, or by research projects from either research
+          group.
+        </p>
+
+        <h4 class="opening-subtitle">Relevant research interests</h4>
+
+        <ul class="opening-list">
+          <li>Graph and geometric deep learning</li>
+          <li>Federated learning</li>
+          <li>Spatiotemporal and multimodal learning</li>
+          <li>Foundation-model fine-tuning and reasoning</li>
+        </ul>
+
+        <p class="opening-application">
+          Prospective visitors may contact me by email with a CV, a brief
+          research statement, and information about the intended funding
+          programme or visit arrangement.
+        </p>
+      </article>
+
+    </div>
+  </div>
 </section>
+	
+
+
+		
+
+	
 			  
 						
     </div>
