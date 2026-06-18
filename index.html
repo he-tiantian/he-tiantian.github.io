@@ -296,7 +296,6 @@
   }
 }
 
-  ```css
 /* =========================
    Section titles
    ========================= */
@@ -320,7 +319,29 @@
   background-color: #bd5d38;
 }
 
+/* =========================
+   Section spacing
+   ========================= */
 
+.resume-section {
+  min-height: auto !important;
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+  scroll-margin-top: 70px;
+}
+
+#about.resume-section {
+  min-height: 85vh !important;
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+.resume-section + .resume-section {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.resume-section + .resume-section {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
 
 </style>
 
