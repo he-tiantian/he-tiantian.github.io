@@ -24,6 +24,70 @@
     <link href="css/resume.min.css" rel="stylesheet">
 
 	  <style>
+
+  :root {
+  --color-primary: #bd5d38;
+  --color-primary-dark: #9f4c2d;
+  --color-primary-soft: rgba(189, 93, 56, 0.08);
+
+  --color-text: #495057;
+  --color-heading: #343a40;
+  --color-muted: #6c757d;
+
+  --color-page-bg: #faf9f7;
+  --color-card-bg: #ffffff;
+  --color-border: rgba(52, 58, 64, 0.09);
+}
+
+body {
+  background-color: var(--color-page-bg);
+  color: var(--color-text);
+}
+
+#about,
+#experience,
+#services {
+  background-color: #ffffff;
+}
+
+#publications,
+#supervision,
+#openings {
+  background-color: var(--color-page-bg);
+}
+
+#sideNav {
+  background-color: #a64f30 !important;
+}
+
+#sideNav .nav-link {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+#sideNav .nav-link:hover,
+#sideNav .nav-link.active {
+  color: #ffffff;
+}
+
+#sideNav .img-profile {
+  border: 0.35rem solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+}
+
+a {
+  color: var(--color-primary);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+::selection {
+  background-color: rgba(189, 93, 56, 0.22);
+  color: var(--color-heading);
+}
+  
+		  
   .publication-toolbar {
     margin-bottom: 1.5rem;
   }
