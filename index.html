@@ -477,6 +477,304 @@ a:hover {
 }
 
 /* =========================
+   Research section
+   ========================= */
+
+#research {
+  background-color: var(--color-page-bg);
+}
+
+.research-content {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.research-intro {
+  max-width: 900px;
+  margin-bottom: 2.2rem;
+  color: var(--color-text);
+  font-size: 1.04rem;
+  line-height: 1.75;
+}
+
+.research-subsection + .research-subsection {
+  margin-top: 3rem;
+}
+
+.research-subsection-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin-bottom: 1.35rem;
+}
+
+.research-subsection-index {
+  display: inline-flex;
+  flex: 0 0 2.3rem;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.research-subsection-heading h3 {
+  margin: 0 0 0.25rem;
+  color: var(--color-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.research-subsection-heading p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+/* Research directions */
+
+.research-direction-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.research-direction-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-top: 4px solid rgba(189, 93, 56, 0.7);
+  border-radius: 0.45rem;
+  background-color: var(--color-card-bg);
+  box-shadow: 0 3px 14px rgba(52, 58, 64, 0.04);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.research-direction-card:hover {
+  border-color: rgba(189, 93, 56, 0.3);
+  border-top-color: var(--color-primary);
+  box-shadow: 0 8px 22px rgba(52, 58, 64, 0.075);
+  transform: translateY(-2px);
+}
+
+.research-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.45rem;
+  height: 2.45rem;
+  margin-bottom: 0.9rem;
+  border-radius: 50%;
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 1.05rem;
+}
+
+.research-direction-card h4 {
+  margin-bottom: 0.65rem;
+  color: var(--color-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.research-direction-card p {
+  flex: 1 1 auto;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+  font-size: 0.94rem;
+  line-height: 1.68;
+}
+
+.research-keywords,
+.research-project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.research-keywords span,
+.research-project-tags span {
+  display: inline-block;
+  padding: 0.22rem 0.5rem;
+  border: 1px solid rgba(189, 93, 56, 0.22);
+  border-radius: 999px;
+  background-color: rgba(189, 93, 56, 0.045);
+  color: var(--color-primary-dark);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.research-project-role {
+  margin: 0.85rem 0 1rem;
+  padding: 0.7rem 0.85rem;
+  border-left: 2px solid rgba(189, 93, 56, 0.48);
+  background-color: rgba(189, 93, 56, 0.035);
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  line-height: 1.58;
+}
+
+.research-project-role strong {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+/* Research projects */
+
+.research-project-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.research-project-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid rgba(189, 93, 56, 0.68);
+  border-radius: 0.45rem;
+  background-color: var(--color-card-bg);
+  box-shadow: 0 3px 14px rgba(52, 58, 64, 0.04);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.research-project-card:hover {
+  border-color: rgba(189, 93, 56, 0.3);
+  border-left-color: var(--color-primary);
+  box-shadow: 0 8px 22px rgba(52, 58, 64, 0.075);
+  transform: translateY(-1px);
+}
+
+.research-project-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.research-project-label {
+  margin-bottom: 0.3rem;
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.research-project-card h4 {
+  margin-bottom: 0.55rem;
+  color: var(--color-heading);
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.research-project-card p {
+  margin-bottom: 0.9rem;
+  color: var(--color-text);
+  font-size: 0.94rem;
+  line-height: 1.68;
+}
+
+.research-project-status {
+  flex: 0 0 auto;
+  padding-top: 0.15rem;
+}
+
+.research-project-status span {
+  display: inline-block;
+  padding: 0.28rem 0.58rem;
+  border-radius: 999px;
+  background-color: rgba(108, 117, 125, 0.08);
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.research-project-role-badge {
+  display: inline-block;
+  margin-bottom: 0.55rem;
+  padding: 0.24rem 0.55rem;
+  border: 1px solid rgba(189, 93, 56, 0.28);
+  border-radius: 999px;
+  background-color: rgba(189, 93, 56, 0.06);
+  color: var(--color-primary-dark);
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+@media (max-width: 991.98px) {
+  .research-direction-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .research-direction-card {
+    padding: 1.15rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .research-intro {
+    margin-bottom: 1.7rem;
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .research-subsection + .research-subsection {
+    margin-top: 2.3rem;
+  }
+
+  .research-subsection-heading {
+    gap: 0.7rem;
+  }
+
+  .research-subsection-index {
+    flex-basis: 2rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.7rem;
+  }
+
+  .research-subsection-heading h3 {
+    font-size: 1.22rem;
+  }
+
+  .research-project-card {
+    display: block;
+    padding: 1.05rem;
+  }
+
+  .research-project-status {
+    margin-top: 0.85rem;
+    padding-top: 0;
+  }
+
+  .research-project-role {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+}
+
+/* =========================
    Section titles
    ========================= */
 
@@ -1157,6 +1455,11 @@ a:hover {
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#about">About</a>
           </li>
+<li class="nav-item">
+  <a class="nav-link js-scroll-trigger" href="#research">
+    Research
+  </a>
+</li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#publications">Publications</a>
           </li>
@@ -1251,7 +1554,230 @@ a:hover {
   </div>
 </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="publications">
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="research">
+  <div class="my-auto research-content">
+    <h2 class="section-title">Research</h2>
+
+    <p class="research-intro">
+      My research develops structure-aware, data-efficient, and scientifically
+      grounded learning methods for foundation models, graph intelligence, and
+      AI-enabled scientific discovery.
+    </p>
+
+    <!-- Research Directions -->
+    <div class="research-subsection">
+      <div class="research-subsection-heading">
+        <span class="research-subsection-index">01</span>
+        <div>
+          <h3>Research Directions</h3>
+          <p>
+            Long-term research themes that define my broader research agenda.
+          </p>
+        </div>
+      </div>
+
+      <div class="research-direction-grid">
+
+        <article class="research-direction-card">
+          <div class="research-card-icon" aria-hidden="true">
+            <i class="fa fa-share-alt"></i>
+          </div>
+
+          <h4>Structure-Aware Learning</h4>
+
+          <p>
+            I study how relational, geometric, and structural priors can be
+            incorporated into modern learning systems. My work includes graph
+            and geometric deep learning, structural attention, sparse
+            computation, and theoretically grounded message passing.
+          </p>
+
+          <div class="research-keywords">
+            <span>Graph Learning</span>
+            <span>Geometric Learning</span>
+            <span>Sparse Computation</span>
+          </div>
+        </article>
+
+        <article class="research-direction-card">
+          <div class="research-card-icon" aria-hidden="true">
+            <i class="fa fa-cubes"></i>
+          </div>
+
+          <h4>Foundation Models and Data-Centric AI</h4>
+
+          <p>
+            I develop data-efficient and structure-aware approaches for
+            foundation-model adaptation, federated
+            learning, multimodal reasoning, and scalable representation
+            learning.
+          </p>
+
+          <div class="research-keywords">
+            <span>Foundation Models</span>
+            <span>Data-Centric AI</span>
+            <span>Federated Learning</span>
+          </div>
+        </article>
+
+        <article class="research-direction-card">
+          <div class="research-card-icon" aria-hidden="true">
+            <i class="fa fa-flask"></i>
+          </div>
+
+          <h4>AI for Scientific Discovery</h4>
+
+          <p>
+            I apply machine learning and foundation models to scientific
+            problems involving materials, catalysis, biology, environmental systems,
+            weather modelling, and other domains that require structured,
+            multi-fidelity, and physically grounded reasoning.
+          </p>
+
+          <div class="research-keywords">
+            <span>AI for Science</span>
+            <span>Materials Intelligence</span>
+            <span>Catalyst Discovery</span>
+            <span>Environmental AI</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Selected Research Projects -->
+    <div class="research-subsection research-projects-subsection">
+      <div class="research-subsection-heading">
+        <span class="research-subsection-index">02</span>
+        <div>
+          <h3>Selected Research Projects</h3>
+          <p>
+            Current projects that connect methodological research with
+            high-impact applications.
+          </p>
+        </div>
+      </div>
+<div class="research-project-list">
+
+  <!-- Project 1 -->
+  <article class="research-project-card">
+    <div class="research-project-main">
+      <div class="research-project-label">
+        Efficient AI for Scientific Discovery
+      </div>
+
+	  <div class="research-project-role-badge">
+          Team-PI · Lead for Efficient AI and Foundation Models
+      </div>
+      <h4>
+        Overcoming the Terascale Design Challenge:
+        Next-Generation Efficient AI for Discoveries in
+        Surface Science and Catalysis
+      </h4>
+
+      <p>
+        This project develops a next-generation efficient AI framework for
+        accelerating discovery in surface science and catalysis. It brings
+        together representative computational and experimental datasets,
+        multi-fidelity foundation models, equivariant sparse structure
+        learning, and agentic AI to understand realistic surfaces,
+        interfaces, adsorbates, and catalytic environments.
+      </p>
+
+      <p>
+        The project aims to move scientific discovery from conventional
+        trial-and-error screening toward an adaptive, autonomous, and
+        self-improving workflow. Key research components include efficient
+        scientific representation learning, multi-fidelity data fusion,
+        hypothesis generation, multi-objective inverse design, uncertainty-
+        aware data acquisition, and experimental validation of promising
+        catalyst candidates.
+      </p>
+
+      <div class="research-project-role">
+        <strong>My focus:</strong>
+        efficient foundation models, equivariant sparse structure learning,
+        structure-aware representation learning, and scalable AI methods for
+        surface science and catalyst discovery.
+      </div>
+
+      <div class="research-project-tags">
+        <span>Surface Science Foundation Models</span>
+        <span>Equivariant Sparse Learning</span>
+        <span>Multi-Fidelity Learning</span>
+        <span>Agentic AI</span>
+        <span>Inverse Materials Design</span>
+        <span>Catalyst Discovery</span>
+      </div>
+    </div>
+
+    <div class="research-project-status">
+      <span>June 2026-May 2031</span>
+    </div>
+  </article>
+
+
+  <!-- Project 2 -->
+  <article class="research-project-card">
+    <div class="research-project-main">
+      <div class="research-project-label">
+        Spatiotemporal AI and Environmental Risk
+      </div>
+
+      <div class="research-project-role-badge">
+         Co-PI · Lead for Spatiotemporal and Multi-modal AI
+      </div>
+		
+      <h4>
+        FLASH: Forecasting Lightning Alerts with
+        Spatio-temporal and Hazard Adaptivity
+      </h4>
+
+      <p>
+        FLASH develops an AI-enabled decision-support framework for dynamic,
+        zone-based lightning risk management at airports. The project moves
+        beyond uniform, binary lightning warnings by modelling the location,
+        movement, and evolution of lightning systems together with local
+        infrastructure, operational activities, exposure, and human
+        vulnerability.
+      </p>
+
+      <p>
+        The framework combines probabilistic lightning nowcasting,
+        spatiotemporal weather modelling, lightning exposure and protection
+        analysis, task-specific hazard assessment, and multimodal risk-data
+        fusion. It will generate continuously updated zone-level risk scores
+        and operational recommendations to support more targeted suspension
+        and resumption decisions while safeguarding airside personnel.
+      </p>
+
+      <div class="research-project-role">
+        <strong>My focus:</strong>
+        spatiotemporal learning, multimodal weather-data fusion,
+        hazard-adaptive forecasting, lightning nowcasting, and risk-aware
+        decision support for airport operations.
+      </div>
+
+      <div class="research-project-tags">
+        <span>Lightning Nowcasting</span>
+        <span>Spatiotemporal Learning</span>
+        <span>Hazard-Adaptive AI</span>
+        <span>Multimodal Data Fusion</span>
+        <span>Risk-Aware Decision Support</span>
+        <span>Aviation Resilience</span>
+      </div>
+    </div>
+
+    <div class="research-project-status">
+      <span>March 2026–February 2029</span>
+    </div>
+  </article>
+
+</div>
+</section>
+		
+		
+		<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="publications">
         <div class="w-100">
           <h2 class="section-title">Publications</h2>
           <div class="publication-toolbar">
