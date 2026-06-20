@@ -46,14 +46,15 @@ body {
 }
 
 #about,
-#experience,
-#services {
-  background-color: #ffffff;
-}
-
 #publications,
 #supervision,
 #openings {
+  background-color: #ffffff;
+}
+
+#research,
+#experience,
+#services {
   background-color: var(--color-page-bg);
 }
 
@@ -479,10 +480,6 @@ a:hover {
 /* =========================
    Research section
    ========================= */
-
-#research {
-  background-color: var(--color-page-bg);
-}
 
 .research-content {
   width: 100%;
@@ -1652,9 +1649,8 @@ a:hover {
 
           <p>
             I develop data-efficient and structure-aware approaches for
-            foundation-model adaptation, federated
-            learning, multimodal reasoning, and scalable representation
-            learning.
+            foundation-model adaptation, federated learning, multimodal
+            reasoning, and scalable representation learning.
           </p>
 
           <div class="research-keywords">
@@ -1710,7 +1706,11 @@ a:hover {
     <div class="research-project-label">
       Efficient AI for Scientific Discovery
     </div>
-	  
+
+    <div class="research-project-role-badge">
+      Team PI · Lead for Efficient AI and Foundation Models
+    </div>
+
     <h4>
       Overcoming the Terascale Design Challenge:
       Next-Generation Efficient AI for Discoveries in
@@ -1730,13 +1730,10 @@ a:hover {
 
       <span>
         <strong>Funding:</strong>
-        Approx. S$10 million
+        Approx. S$10M
       </span>
     </div>
 
-	<div class="research-project-role-badge">
-      Team PI · Lead for Efficient AI and Foundation Models
-    </div>
 
     <p>
       This project develops a next-generation efficient AI framework for
@@ -1788,6 +1785,10 @@ a:hover {
       Spatiotemporal AI and Environmental Risk
     </div>
 
+    <div class="research-project-role-badge">
+      Co-PI · Lead for Spatiotemporal and Multimodal AI
+    </div>
+
     <h4>
       FLASH: Forecasting Lightning Alerts with
       Spatio-temporal and Hazard Adaptivity
@@ -1801,13 +1802,10 @@ a:hover {
 
       <span>
         <strong>Funding:</strong>
-        Approx. S$12 million
+        Approx. S$12M
       </span>
     </div>
 
-	<div class="research-project-role-badge">
-      Co-PI · Lead for Spatiotemporal and Multimodal AI
-    </div>
 
     <p>
       FLASH develops an AI-enabled decision-support framework for dynamic,
@@ -1850,11 +1848,17 @@ a:hover {
   </div>
 </article>
 
-</div>
+      </div>
+      <!-- /.research-project-list -->
+
+    </div>
+    <!-- /.research-projects-subsection -->
+
+  </div>
+  <!-- /.research-content -->
 </section>
-		
-		
-		<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="publications">
+
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="publications">
         <div class="w-100">
           <h2 class="section-title">Publications</h2>
           <div class="publication-toolbar">
@@ -2902,4 +2906,3 @@ function makeLink(url, label) {
   </body>
 
 </html>
-
