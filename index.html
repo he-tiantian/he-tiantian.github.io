@@ -634,6 +634,33 @@ a:hover {
 
 /* Research projects */
 
+.research-project-meta {
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  align-items: center;
+  column-gap: 1.15rem;
+  row-gap: 0.4rem;
+  margin: 0.5rem 0 1rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid rgba(52, 58, 64, 0.08);
+  border-radius: 0.35rem;
+  background-color: rgba(52, 58, 64, 0.025);
+  color: var(--color-muted);
+  font-size: 0.79rem;
+  line-height: 1.45;
+}
+
+.research-project-meta span {
+  display: inline-flex;
+  gap: 0.28rem;
+  white-space: nowrap;
+}
+
+.research-project-meta strong {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
 .research-project-list {
   display: grid;
   gap: 1rem;
@@ -728,6 +755,23 @@ a:hover {
 
   .research-direction-card {
     padding: 1.15rem;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .research-project-meta {
+    grid-template-columns: repeat(2, max-content);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .research-project-meta {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .research-project-meta span {
+    white-space: normal;
   }
 }
 
@@ -1680,7 +1724,7 @@ a:hover {
     <div class="research-project-meta">
       <span>
         <strong>Grantor:</strong>
-        National Research Foundation Singapore
+        NRF Singapore
       </span>
 
       <span>
@@ -1689,7 +1733,7 @@ a:hover {
       </span>
 
       <span>
-        <strong>Total project funding:</strong>
+        <strong>Funding:</strong>
         Approx. S$10 million
       </span>
     </div>
@@ -1760,7 +1804,7 @@ a:hover {
       </span>
 
       <span>
-        <strong>Total project funding:</strong>
+        <strong>Funding:</strong>
         Approx. S$12 million
       </span>
     </div>
