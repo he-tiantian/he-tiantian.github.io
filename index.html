@@ -2636,7 +2636,8 @@ function formatPages(pages) {
 function formatReference(item) {
   var category = publicationCategory(item.type);
   var authors = formatAuthors(item.author);
-  var title = '“' + escapeHtml(item.title) + ',”';
+  var cleanTitle = String(item.title || '').replace(/[,\s]+$/g, '');
+  var title = '“' + escapeHtml(cleanTitle) + ',”';
   var components = [];
 
   if (authors) {
@@ -2739,8 +2740,16 @@ function formatReference(item) {
     components.push(escapeHtml(item.note));
   }
 
+  var nonEmptyComponents = components.filter(Boolean);
+
+  if (nonEmptyComponents.length <= 2) {
+    return ensureTerminalPeriod(nonEmptyComponents.join(' '));
+  }
+
   return ensureTerminalPeriod(
-    components.filter(Boolean).join(', ')
+    nonEmptyComponents.slice(0, 2).join(' ') +
+    ', ' +
+    nonEmptyComponents.slice(2).join(', ')
   );
 }
 
