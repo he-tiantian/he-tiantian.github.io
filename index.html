@@ -2638,73 +2638,55 @@ function formatReference(item) {
   var authors = formatAuthors(item.author);
   var cleanTitle = String(item.title || '').replace(/[,\s]+$/g, '');
   var title = '“' + escapeHtml(cleanTitle) + ',”';
-  var components = [];
-
-  if (authors) {
-    components.push(authors);
-  }
-
-  components.push(title);
+  var venueComponents = [];
 
   if (category === 'article') {
     if (item.journal) {
-      components.push(
-        '<em>' + escapeHtml(item.journal) + '</em>'
-      );
+      venueComponents.push('<em>' + escapeHtml(item.journal) + '</em>');
     }
 
     if (item.volume) {
-      components.push(
-        'vol. ' + escapeHtml(item.volume)
-      );
+      venueComponents.push('vol. ' + escapeHtml(item.volume));
     }
 
     if (item.number) {
-      components.push(
-        'no. ' + escapeHtml(item.number)
-      );
+      venueComponents.push('no. ' + escapeHtml(item.number));
     }
 
     if (item.pages) {
-      components.push(
-        'pp. ' + escapeHtml(formatPages(item.pages))
-      );
+      venueComponents.push('pp. ' + escapeHtml(formatPages(item.pages)));
     }
 
     if (item.year) {
-      components.push(String(item.year));
+      venueComponents.push(String(item.year));
     }
   } else if (category === 'inproceedings') {
     if (item.booktitle) {
-      components.push(
-        '<em>' + escapeHtml(item.booktitle) + '</em>'
-      );
+      venueComponents.push('<em>' + escapeHtml(item.booktitle) + '</em>');
     }
 
     if (item.pages) {
-      components.push(
-        'pp. ' + escapeHtml(formatPages(item.pages))
-      );
+      venueComponents.push('pp. ' + escapeHtml(formatPages(item.pages)));
     }
 
     if (item.year) {
-      components.push(String(item.year));
+      venueComponents.push(String(item.year));
     }
   } else if (category === 'thesis') {
     if (item.type === 'phdthesis') {
-      components.push('Ph.D. dissertation');
+      venueComponents.push('Ph.D. dissertation');
     } else if (item.type === 'mastersthesis') {
-      components.push('Master’s thesis');
+      venueComponents.push('Master’s thesis');
     } else {
-      components.push('Thesis');
+      venueComponents.push('Thesis');
     }
 
     if (item.school) {
-      components.push(escapeHtml(item.school));
+      venueComponents.push(escapeHtml(item.school));
     }
 
     if (item.year) {
-      components.push(String(item.year));
+      venueComponents.push(String(item.year));
     }
   } else {
     var venue =
@@ -2714,43 +2696,41 @@ function formatReference(item) {
       item.publisher;
 
     if (venue) {
-      components.push(
-        '<em>' + escapeHtml(venue) + '</em>'
-      );
+      venueComponents.push('<em>' + escapeHtml(venue) + '</em>');
     }
 
     if (item.volume) {
-      components.push(
-        'vol. ' + escapeHtml(item.volume)
-      );
+      venueComponents.push('vol. ' + escapeHtml(item.volume));
     }
 
     if (item.pages) {
-      components.push(
-        'pp. ' + escapeHtml(formatPages(item.pages))
-      );
+      venueComponents.push('pp. ' + escapeHtml(formatPages(item.pages)));
     }
 
     if (item.year) {
-      components.push(String(item.year));
+      venueComponents.push(String(item.year));
     }
   }
 
   if (item.note) {
-    components.push(escapeHtml(item.note));
+    venueComponents.push(escapeHtml(item.note));
   }
 
-  var nonEmptyComponents = components.filter(Boolean);
+  var mainParts = [];
 
-  if (nonEmptyComponents.length <= 2) {
-    return ensureTerminalPeriod(nonEmptyComponents.join(' '));
+  if (authors) {
+    mainParts.push(authors);
   }
 
-  return ensureTerminalPeriod(
-    nonEmptyComponents.slice(0, 2).join(' ') +
-    ' ' +
-    nonEmptyComponents.slice(2).join(', ')
-  );
+  mainParts.push(title);
+
+  var reference = mainParts.join(' ');
+
+  if (venueComponents.length) {
+    reference += ' ' + venueComponents.join(', ');
+  }
+
+  return ensureTerminalPeriod(reference);
 }
 
 function makeLink(url, label) {
