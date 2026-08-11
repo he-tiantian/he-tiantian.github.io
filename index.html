@@ -2555,6 +2555,7 @@ function formatAuthors(authorString) {
     author: fields.author || '',
     year: isNaN(year) ? 0 : year,
     sortorder: isNaN(sortorder) ? 0 : sortorder,
+    status: cleanBibText(fields.status).toLowerCase(),
     journal: cleanBibText(fields.journal),
     booktitle: cleanBibText(fields.booktitle),
     school: cleanBibText(fields.school),
@@ -2569,6 +2570,10 @@ function formatAuthors(authorString) {
     code: cleanBibText(fields.code)
   };
 }
+
+		function isOngoingPublication(item) {
+                return item.status === 'ongoing';
+        }
 
         function publicationCategory(type) {
           if (type === 'article') return 'article';
@@ -2783,23 +2788,30 @@ function makeLink(url, label) {
   var years = {};
   var beforeLabel = 'Before ' + PUBLICATION_YEAR_CUTOFF;
 
-  items.forEach(function (item) {
-    var yearKey;
+  var ongoingPublications = [];
 
-    if (!item.year) {
-      yearKey = 'Other';
-    } else if (item.year < PUBLICATION_YEAR_CUTOFF) {
-      yearKey = beforeLabel;
-    } else {
-      yearKey = String(item.year);
-    }
+items.forEach(function (item) {
+  var yearKey;
 
-    if (!years[yearKey]) {
-      years[yearKey] = [];
-    }
+  if (isOngoingPublication(item)) {
+    ongoingPublications.push(item);
+    return;
+  }
 
-    years[yearKey].push(item);
-  });
+  if (!item.year) {
+    yearKey = 'Other';
+  } else if (item.year < PUBLICATION_YEAR_CUTOFF) {
+    yearKey = beforeLabel;
+  } else {
+    yearKey = String(item.year);
+  }
+
+  if (!years[yearKey]) {
+    years[yearKey] = [];
+  }
+
+  years[yearKey].push(item);
+});
 
   var sortedYears = Object.keys(years).sort(function (a, b) {
     if (a === 'Other') return 1;
@@ -2813,7 +2825,27 @@ function makeLink(url, label) {
 
   var publicationIndex = 1;
 
-  list.innerHTML = sortedYears.map(function (year) {
+  var publicationSections = [];
+
+if (ongoingPublications.length) {
+  publicationSections.push([
+    '<h3 class="publication-year">',
+      'Ongoing Papers',
+    '</h3>',
+    ongoingPublications.map(function (item) {
+      var html = renderPublication(
+        item,
+        publicationIndex
+      );
+
+      publicationIndex += 1;
+      return html;
+    }).join('')
+  ].join(''));
+}
+
+publicationSections = publicationSections.concat(
+  sortedYears.map(function (year) {
     var yearPublications = years[year]
       .map(function (item) {
         var html = renderPublication(
@@ -2832,7 +2864,10 @@ function makeLink(url, label) {
       '</h3>',
       yearPublications
     ].join('');
-  }).join('');
+  })
+);
+
+list.innerHTML = publicationSections.join('');
 }
 
         function applyFilters() {
@@ -2856,17 +2891,22 @@ function makeLink(url, label) {
             })
             .then(function (bibtex) {
               publications = bibtexParse.toJSON(bibtex)
-               .map(normalizeEntry)
-               .sort(function (a, b) {
-               if (b.year !== a.year) {
-                    return b.year - a.year;
-                  }
+                  .map(normalizeEntry)
+                  .sort(function (a, b) {
+                  if (isOngoingPublication(a) !== isOngoingPublication(b)) {
+                      return isOngoingPublication(b) - isOngoingPublication(a);
+                   }
 
-               if (b.sortorder !== a.sortorder) {
-                   return b.sortorder - a.sortorder;
-                  }
-               return a.title.localeCompare(b.title);
-              });
+                 if (b.year !== a.year) {
+                     return b.year - a.year;
+                   }
+
+                 if (b.sortorder !== a.sortorder) {
+                     return b.sortorder - a.sortorder;
+                }
+
+                return a.title.localeCompare(b.title);
+            });
               render(publications);
             })
             .catch(function (error) {
