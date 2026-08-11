@@ -2543,30 +2543,32 @@ function formatAuthors(authorString) {
 }
 
         function normalizeEntry(entry) {
-          var fields = entry.entryTags || {};
-          var type = String(entry.entryType || 'other').toLowerCase();
-          var year = parseInt(cleanBibText(fields.year), 10);
+  var fields = entry.entryTags || {};
+  var type = String(entry.entryType || 'other').toLowerCase();
+  var year = parseInt(cleanBibText(fields.year), 10);
+  var sortorder = parseInt(cleanBibText(fields.sortorder), 10);
 
-          return {
-            key: entry.citationKey || '',
-            type: type,
-            title: cleanBibText(fields.title) || 'Untitled',
-            author: fields.author || '',
-            year: isNaN(year) ? 0 : year,
-            journal: cleanBibText(fields.journal),
-            booktitle: cleanBibText(fields.booktitle),
-            school: cleanBibText(fields.school),
-            publisher: cleanBibText(fields.publisher),
-            volume: cleanBibText(fields.volume),
-            number: cleanBibText(fields.number),
-            pages: cleanBibText(fields.pages),
-            note: cleanBibText(fields.note),
-            doi: cleanBibText(fields.doi),
-            url: cleanBibText(fields.url),
-            pdf: cleanBibText(fields.pdf),
-            code: cleanBibText(fields.code)
-          };
-        }
+  return {
+    key: entry.citationKey || '',
+    type: type,
+    title: cleanBibText(fields.title) || 'Untitled',
+    author: fields.author || '',
+    year: isNaN(year) ? 0 : year,
+    sortorder: isNaN(sortorder) ? 0 : sortorder,
+    journal: cleanBibText(fields.journal),
+    booktitle: cleanBibText(fields.booktitle),
+    school: cleanBibText(fields.school),
+    publisher: cleanBibText(fields.publisher),
+    volume: cleanBibText(fields.volume),
+    number: cleanBibText(fields.number),
+    pages: cleanBibText(fields.pages),
+    note: cleanBibText(fields.note),
+    doi: cleanBibText(fields.doi),
+    url: cleanBibText(fields.url),
+    pdf: cleanBibText(fields.pdf),
+    code: cleanBibText(fields.code)
+  };
+}
 
         function publicationCategory(type) {
           if (type === 'article') return 'article';
@@ -2854,11 +2856,17 @@ function makeLink(url, label) {
             })
             .then(function (bibtex) {
               publications = bibtexParse.toJSON(bibtex)
-                .map(normalizeEntry)
-                .sort(function (a, b) {
-                  if (b.year !== a.year) return b.year - a.year;
-                  return a.title.localeCompare(b.title);
-                });
+               .map(normalizeEntry)
+               .sort(function (a, b) {
+               if (b.year !== a.year) {
+                    return b.year - a.year;
+                  }
+
+               if (b.sortorder !== a.sortorder) {
+                   return b.sortorder - a.sortorder;
+                  }
+               return a.title.localeCompare(b.title);
+              });
               render(publications);
             })
             .catch(function (error) {
