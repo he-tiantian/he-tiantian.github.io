@@ -1302,6 +1302,22 @@ a:hover {
   border-top: 1px solid rgba(0, 0, 0, 0.07);
 }
 
+/* Official recruitment links */
+.opening-apply-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-primary);
+  font-size: 0.93rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.opening-apply-link:hover,
+.opening-apply-link:focus {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
 /* Transition kept separate for readability */
 .service-card,
 .opening-card {
@@ -2298,72 +2314,89 @@ a:hover {
     <h2 class="section-title">Opportunities</h2>
 
     <p class="openings-intro">
-      I welcome motivated students, interns, visiting scholars, and collaborators
-      interested in machine learning and AI for science. Current openings and
-      visiting opportunities will be updated here.
+      I am recruiting two scientists to join my group at CFAR, A*STAR. 
+	  The positions focus on frontier AI methods for scientific
+      discovery and environmental intelligence. Please apply through the official
+      A*STAR Careers links below.
     </p>
 
     <div class="openings-container">
 
+      <!-- Senior Scientist: AI for Science -->
       <article class="opening-card">
         <div class="opening-card-header">
           <div class="card-icon" aria-hidden="true">
-            <i class="fa fa-briefcase"></i>
+            <i class="fa fa-flask"></i>
           </div>
-
           <div>
-            <h3 class="card-title">Postdoctoral Research Fellow</h3>
-            <span class="opening-status">No current openings</span>
+            <h3 class="card-title">Senior Scientist &mdash; AI for Science</h3>
+            <span class="opening-status">Recruiting &middot; Requisition 3393</span>
           </div>
         </div>
 
         <p>
-          The previously advertised postdoctoral position has been filled.
-          I am not currently recruiting postdoctoral researchers, but future
-          openings may be posted here when available.
+          Lead advanced AI research for scientific discovery, with applications in
+          materials, surface science, and catalysis. Research directions include
+          geometric and equivariant learning, graph and foundation models,
+          generative AI, multi-fidelity learning, and efficient AI.
         </p>
-        <!--
-        <h4 class="opening-subtitle">Research areas</h4>
 
-        <ul class="opening-list">
-          <li>Graph and geometric deep learning</li>
-          <li>Federated learning</li>
-          <li>Spatiotemporal and multimodal learning</li>
-          <li>Foundation-model fine-tuning and reasoning</li>
-          <li>Materials science and catalyst discovery</li>
-          <li>Weather modelling and lightning nowcasting</li>
-          <li>Environmental risk forecasting</li>
-        </ul>
-         
         <p class="opening-application">
-          Applicants with a strong publication record in one or more of
-          these areas are welcome to apply by email with a CV and a brief
-          research statement.
+          <a class="opening-apply-link" href="https://careers.a-star.edu.sg/job/Senior-Scientist%2C-Centre-for-Frontier-AI-Research%2C-IAIC/3393-en_GB/"
+             target="_blank" rel="noopener noreferrer">
+            View position and apply via A*STAR Careers
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+          </a>
         </p>
-		-->  
       </article>
 
+      <!-- Scientist: Spatiotemporal and Multimodal AI -->
+      <article class="opening-card">
+        <div class="opening-card-header">
+          <div class="card-icon" aria-hidden="true">
+            <i class="fa fa-cloud"></i>
+          </div>
+          <div>
+            <h3 class="card-title">Scientist &mdash; Spatiotemporal &amp; Multimodal AI</h3>
+            <span class="opening-status">Recruiting &middot; Requisition 3392</span>
+          </div>
+        </div>
+
+        <p>
+          Develop spatiotemporal, multimodal, and structure-aware AI for weather
+          forecasting and environmental hazard prediction, including lightning
+          nowcasting. Topics include sequence and video prediction, multimodal
+          weather-data fusion, graph learning, efficient attention, and
+          uncertainty-aware forecasting.
+        </p>
+
+        <p class="opening-application">
+          <a class="opening-apply-link" href="https://careers.a-star.edu.sg/job/Scientist%2C-Centre-for-Frontier-AI-Research%2C-IAIC/3392-en_GB/"
+             target="_blank" rel="noopener noreferrer">
+            View position and apply via A*STAR Careers
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+          </a>
+        </p>
+      </article>
+
+      <!-- Visiting opportunities are separate from formal staff vacancies. -->
       <article class="opening-card">
         <div class="opening-card-header">
           <div class="card-icon" aria-hidden="true">
             <i class="fa fa-graduation-cap"></i>
           </div>
-
           <div>
-            <h3 class="card-title">
-              Exchange Students, Research Interns, and Visiting Scholars
-            </h3>
-            <span class="opening-status">Applications welcomed year-round</span>
+            <h3 class="card-title">Exchange Students, Research Interns, and Visiting Scholars</h3>
+            <span class="opening-status">Visiting enquiries welcomed</span>
           </div>
         </div>
 
         <p>
-          We welcome Ph.D. students and researchers for short- or long-term visits,
+          I welcome Ph.D. students and researchers for short- or long-term visits,
           including visits supported by CSC or other institutional funding schemes.
         </p>
 
         <h4 class="opening-subtitle">Relevant research interests</h4>
-
         <ul class="opening-list">
           <li>Graph and geometric deep learning</li>
           <li>Federated learning</li>
